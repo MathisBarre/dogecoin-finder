@@ -20,7 +20,7 @@ function App() {
       <h1>Les restaurants</h1>
       {restaurants.length >= 1 ? restaurants.map((restaurant) => {
         return (
-          <article key={restaurant.id}>
+          <article className='restaurant' key={restaurant.id}>
             <h2>{restaurant.name}</h2>
             <p>{restaurant.address1}, {restaurant.address2}</p>
           </article>

@@ -1,0 +1,19 @@
+.restaurant {
+  border-left: 2px solid white;
+  padding: 1rem;
+  cursor: pointer; 
+  transition-duration: 100ms;
+  margin-bottom: 1rem;
+}
+
+.restaurant:hover {
+  background-color: #2a394b;
+}
+
+.restaurant h2 {
+  margin-top: 0;
+}
+
+.restaurant p:last-child {
+  margin-bottom: 0;
+}
