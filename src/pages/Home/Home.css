@@ -1,24 +1,33 @@
-.restaurant {
+.card {
   border-left: 2px solid white;
   padding: 1rem;
   cursor: pointer; 
   transition-duration: 100ms;
-  margin-bottom: 1rem;
+  overflow: hidden;
 }
 
-.restaurant:hover {
+.card:hover {
   background-color: #2a394b;
 }
 
-.restaurant h2 {
+.card h2 {
   margin-top: 0;
+  text-overflow: clip;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
-.restaurant p:last-child {
+.card p:last-child {
   margin-bottom: 0;
 }
 
-.restaurant-wrapper, .restaurant-wrapper:hover {
+.card-wrapper, .card-wrapper:hover {
   text-decoration: none;
   color: inherit
+}
+
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem;
 }

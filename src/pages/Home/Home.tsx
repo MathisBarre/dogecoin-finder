@@ -1,37 +1,39 @@
 import "./Home.css";
 import { Link, useLoaderData } from "react-router-dom";
-import { getRestaurants } from "../../api/getRestaurants";
-import { Restaurant } from "../../type/restaurant.entity";
+import { ExchangeResume } from "../../type/exchange-resume.entity";
+import { getExchangesResume } from "../../api/getExchangesResume";
 
 type LoaderData = {
-  restaurants: Restaurant[];
+  exchangesResume: ExchangeResume[];
 };
 
 export async function loader() {
-  const restaurants = await getRestaurants();
-  return {restaurants};
+  const exchangesResume = await getExchangesResume();
+  return {exchangesResume};
 }
 
 function Home() {
-  const {restaurants} = useLoaderData() as LoaderData;
+  const {exchangesResume} = useLoaderData() as LoaderData;
 
   return (
     <main>
-      <h1>Les restaurants</h1>
+      <h1>Exchanges acceptant le Dogecoin</h1>
       
-      {restaurants.map((restaurant) => {
-          return (
-            <Link to={`restaurant`} className="restaurant-wrapper">
-              <article className="restaurant" key={restaurant.id}>
-                <h2>{restaurant.name}</h2>
-                <p>
-                  {restaurant.address1}, {restaurant.address2}
-                </p>
-              </article>
-            </Link>
-          );
-        })
-      }
+      <div className="home-grid">
+        {exchangesResume.map((exchangeResume) => {
+            return (
+              <Link to={`exchange/${exchangeResume.id}`} className="card-wrapper">
+                <article className="card" key={exchangeResume.id}>
+                  <h2>{exchangeResume.name}</h2>
+                  <p>
+                    Adjusted volume 24h share: {exchangeResume.adjusted_volume_24h_share}
+                  </p>
+                </article>
+              </Link>
+            );
+          })
+        }
+      </div>
     </main>
   );
 }
