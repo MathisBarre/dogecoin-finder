@@ -1,25 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
+import { Restaurant } from './type/restaurant.entity';
 
 function App() {
+  const [restaurants, setRestaurants] = useState<Restaurant[]>([])
+  async function getRestaurants() {
+    const response = await fetch("https://private-anon-8d4e20cb83-pizzaapp.apiary-mock.com/restaurants/")
+    const json: Restaurant[] = await response.json()
+    setRestaurants(json)
+  }
+
+  useEffect(() => {
+    getRestaurants()
+  }, [])
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      <h1>Les restaurants</h1>
+      {restaurants.length >= 1 ? restaurants.map((restaurant) => {
+        return (
+          <article key={restaurant.id}>
+            <h2>{restaurant.name}</h2>
+            <p>{restaurant.address1}, {restaurant.address2}</p>
+          </article>
+        )
+      }) : (
+        <p>Loading...</p>
+      )}
+    </main>
   );
 }
 
