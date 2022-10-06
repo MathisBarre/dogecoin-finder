@@ -1,4 +1,4 @@
-import "./Home.css";
+import "./HomePage.css";
 import { Link, useLoaderData } from "react-router-dom";
 import { ExchangeResume } from "../../type/exchange-resume.entity";
 import { getExchangesResume } from "../../api/getExchangesResume";
@@ -12,7 +12,7 @@ export async function loader() {
   return {exchangesResume};
 }
 
-function Home() {
+function HomePage() {
   const {exchangesResume} = useLoaderData() as LoaderData;
 
   return (
@@ -39,4 +39,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default HomePage;
