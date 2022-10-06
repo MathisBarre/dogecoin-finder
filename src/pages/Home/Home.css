@@ -17,3 +17,8 @@
 .restaurant p:last-child {
   margin-bottom: 0;
 }
+
+.restaurant-wrapper, .restaurant-wrapper:hover {
+  text-decoration: none;
+  color: inherit
+}
