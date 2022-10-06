@@ -17,6 +17,7 @@ function Home() {
 
   return (
     <main>
+      <img src="https://upload.wikimedia.org/wikipedia/en/d/d0/Dogecoin_Logo.png" alt="dogecoin" height={128} width={128} />
       <h1>Exchanges acceptant le Dogecoin</h1>
       
       <div className="home-grid">
