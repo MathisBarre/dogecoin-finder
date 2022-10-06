@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Home from './pages/Home/Home';
+import Home, {loader as homeLoader} from './pages/Home/Home';
 import Restaurant from './pages/Restaurant/Restaurant';
 
 const root = ReactDOM.createRoot(
@@ -12,6 +12,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
+    loader: homeLoader
   },
   {
     path: "/restaurant",
