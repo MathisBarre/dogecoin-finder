@@ -2,6 +2,7 @@ import "./HomePage.css";
 import { Link, useLoaderData } from "react-router-dom";
 import { ExchangeResume } from "../../type/exchange-resume.entity";
 import { getExchangesResume } from "../../api/getExchangesResume";
+import Card from "./Card";
 
 type LoaderData = {
   exchangesResume: ExchangeResume[];
@@ -23,14 +24,7 @@ function HomePage() {
       <div className="home-grid">
         {exchangesResume.map((exchangeResume) => {
             return (
-              <Link to={`exchange/${exchangeResume.id}`} className="card-wrapper">
-                <article className="card" key={exchangeResume.id}>
-                  <h2>{exchangeResume.name}</h2>
-                  <p>
-                    Adjusted volume 24h share: {exchangeResume.adjusted_volume_24h_share}
-                  </p>
-                </article>
-              </Link>
+             <Card exchangeResume={exchangeResume} />
             );
           })
         }
